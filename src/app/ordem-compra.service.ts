@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class OrdemCompraService {
     constructor(private http: HttpClient) {}
-    public efetivarCompra(pedido: Pedido): Observable<any> {
+    public efetivarCompra(pedido: Pedido): Observable<number> {
 
         let headers: HttpHeaders = new HttpHeaders()
 
@@ -19,6 +19,6 @@ export class OrdemCompraService {
             pedido,
             {headers: headers}
         )
-        .pipe(map((resposta: any) => resposta.id ))
+        .pipe(map((resposta: any) => {return resposta.id}))
     }
 }

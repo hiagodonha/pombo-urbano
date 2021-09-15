@@ -2,6 +2,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 //import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,14 +17,17 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
+//pipe personalizado
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+
+import { CarrinhoService } from './carrinho.service';
+
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
-//pipe personalizado
-import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component'
-import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -44,11 +48,12 @@ registerLocaleData(localePt, 'pt-BR');
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
     //FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ 
+    { provide: CarrinhoService, useClass: CarrinhoService },
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

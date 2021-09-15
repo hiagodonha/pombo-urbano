@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 //import { Observable, interval, Observer, Subscription } from 'rxjs';
+import  {CarrinhoService}  from '../carrinho.service'
  
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
@@ -22,10 +23,13 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
    constructor(
       private route: ActivatedRoute, 
-      private ofertasService: OfertasService
+      private ofertasService: OfertasService,
+      private carrinhoService: CarrinhoService
       ) { }
 
   ngOnInit(): void {
+
+    //console.log('Oferta - Array de intens do carrinho: ', this.carrinhoService.exibirItens())
 
     this.route.params.subscribe((parametros: Params) => {
       this.ofertasService.getOfertaPorId(parametros.id)
@@ -74,6 +78,11 @@ export class OfertaComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
    /* this.meuObservableTesteSubscription.unsubscribe()
     this.tempoObservableSubcription.unsubscribe() */
+  }
+
+  public adicionarItemCarro(): void {
+    this.carrinhoService.incluirItem(this.oferta)
+    console.log(this.carrinhoService.exibirItens())
   }
  
 }

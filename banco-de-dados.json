@@ -262,6 +262,27 @@
       "complemento": "test",
       "formaPagamento": "dinheiro",
       "id": 11
+    },
+    {
+      "endereco": "teste",
+      "numero": "34",
+      "complemento": "teste",
+      "formaPagamento": "dinheiro",
+      "id": 12
+    },
+    {
+      "endereco": "teste",
+      "numero": "34",
+      "complemento": "teste",
+      "formaPagamento": "dinheiro",
+      "id": 13
+    },
+    {
+      "endereco": "teste",
+      "numero": "34",
+      "complemento": "tese",
+      "formaPagamento": "debito",
+      "id": 14
     }
   ]
 }
